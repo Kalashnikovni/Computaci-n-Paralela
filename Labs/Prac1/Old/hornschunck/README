@@ -1,0 +1,20 @@
+Note to curious people:
+
+You can simply use the code by Enric Meinhardt Llopis (http://www.ipol.im/pub/art/2013/20/phs_3.tar.gz) if you understand what you are doing and seeing.
+
+Otherwise do the following:
+
+  1) Compile flow-code just this time
+
+    cd flow-code/imageLib
+    make
+    cd ..
+    make
+    cd ..
+
+  2) Compile horn_schunck_classic.c and run the script to test the optical flow
+
+    make
+    ./run
+
+  3) Take a look to out.png

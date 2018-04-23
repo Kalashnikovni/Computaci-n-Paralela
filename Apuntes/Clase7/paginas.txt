@@ -1,0 +1,1 @@
+Aliasing: https://cellperformance.beyond3d.com/articles/2006/05/demystifying-the-restrict-keyword.html 

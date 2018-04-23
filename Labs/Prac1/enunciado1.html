@@ -1,0 +1,60 @@
+
+<!-- saved from url=(0060)file:///Users/bc/materias/cp/laboratorio2018/enunciado1.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"></head><body><h1 id="computación-paralela-2018">Computación Paralela 2018</h1>
+<h2 id="laboratorio-1---optimización-secuencial">Laboratorio 1 - Optimización secuencial</h2>
+<h3 id="cosas-para-hacer">Cosas para hacer</h3>
+<ul>
+<li>Opciones de compilación (explorar mucho).</li>
+<li>Mejoras algorítmicas (pensar algunas).</li>
+<li>Optimizaciones de cálculos.</li>
+<li>Unrolling de loops y otras fuentes de ILP.</li>
+<li>Hugepages.</li>
+<li>Estrategias cache-aware (blocking).</li>
+<li><dl>
+<dt>Profiling (perf) y timing (time).</dt>
+<dd><ul>
+<li>Normalizar el tiempo respecto al tamaño del problema (ns/spinflip por ejemplo).</li>
+</ul>
+</dd>
+</dl></li>
+</ul>
+<h3 id="entrega">Entrega</h3>
+<p>Presentación de los resultados (10 minutos) e informe breve con:</p>
+<ul>
+<li><dl>
+<dt>Características del hardware y del software:</dt>
+<dd><ul>
+<li>CPU: modelo y velocidad.</li>
+<li>Memoria: capacidad, velocidad, cantidad de canales ocupados.</li>
+<li>Compilador: nombre y versión.</li>
+<li>Sistema Operativo: nombre, versión, arquitectura.</li>
+</ul>
+</dd>
+</dl></li>
+<li><dl>
+<dt>Gráficas de scaling para la versión más rápida obtenida.</dt>
+<dd><ul>
+<li>Tiempo de cómputo normalizado vs. tamaño del problema (lin-log usualmente).</li>
+<li>No, no es lineal, asi que hay que explorar tamaños encontrando las diferencias en el sistema de memoria.</li>
+<li>Cada punto debe ser promediado, al menos, 3 veces. Lo ideal es graficar el intervalo de varianza.</li>
+</ul>
+</dd>
+</dl></li>
+<li><dl>
+<dt>Optimizaciones probadas y sus resultados.</dt>
+<dd><ul>
+<li>Explicación y mediciones que validan la explicación.</li>
+<li><dl>
+<dt>Intentar medir algo más que el tiempo de mejora.</dt>
+<dd><ul>
+<li>Menos caché misses.</li>
+<li>Más IPC.</li>
+<li>Menos stalled cycles.</li>
+</ul>
+</dd>
+</dl></li>
+</ul>
+</dd>
+</dl></li>
+</ul>
+</body></html>

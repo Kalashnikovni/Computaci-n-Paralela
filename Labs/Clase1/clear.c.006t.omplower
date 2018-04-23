@@ -1,0 +1,93 @@
+
+;; Function clear1 (clear1, funcdef_no=0, decl_uid=2554, cgraph_uid=0, symbol_order=1)
+
+clear1 (int * array, int size)
+{
+  long unsigned int D.2577;
+  long unsigned int D.2578;
+  int * D.2579;
+  int i;
+
+  i = 0;
+  goto <D.2558>;
+  <D.2557>:
+  D.2577 = (long unsigned int) i;
+  D.2578 = D.2577 * 4;
+  D.2579 = array + D.2578;
+  *D.2579 = 0;
+  i = i + 1;
+  <D.2558>:
+  if (i < size) goto <D.2557>; else goto <D.2559>;
+  <D.2559>:
+}
+
+
+
+;; Function clear2 (clear2, funcdef_no=1, decl_uid=2562, cgraph_uid=1, symbol_order=2)
+
+clear2 (int * array, int size)
+{
+  long unsigned int D.2580;
+  long unsigned int D.2581;
+  int * D.2582;
+  int * p;
+
+  p = array;
+  goto <D.2566>;
+  <D.2565>:
+  *p = 0;
+  p = p + 4;
+  <D.2566>:
+  D.2580 = (long unsigned int) size;
+  D.2581 = D.2580 * 4;
+  D.2582 = array + D.2581;
+  if (D.2582 > p) goto <D.2565>; else goto <D.2567>;
+  <D.2567>:
+}
+
+
+
+;; Function clear3 (clear3, funcdef_no=2, decl_uid=2570, cgraph_uid=2, symbol_order=3)
+
+clear3 (int * array, int size)
+{
+  long unsigned int D.2583;
+  long unsigned int D.2584;
+
+  D.2583 = (long unsigned int) size;
+  D.2584 = D.2583 * 4;
+  memset (array, 0, D.2584);
+}
+
+
+
+;; Function main (main, funcdef_no=3, decl_uid=2573, cgraph_uid=3, symbol_order=4)
+
+main ()
+{
+  double D.2585;
+  double D.2586;
+  double D.2587;
+  double D.2588;
+  double D.2589;
+  double D.2590;
+  double t;
+
+  t = omp_get_wtime ();
+  clear1 (&a, 134217728);
+  D.2585 = omp_get_wtime ();
+  D.2586 = D.2585 - t;
+  printf ("clear1: %lf\n", D.2586);
+  t = omp_get_wtime ();
+  clear2 (&a, 134217728);
+  D.2587 = omp_get_wtime ();
+  D.2588 = D.2587 - t;
+  printf ("clear2: %lf\n", D.2588);
+  t = omp_get_wtime ();
+  clear3 (&a, 134217728);
+  D.2589 = omp_get_wtime ();
+  D.2590 = D.2589 - t;
+  printf ("clear3: %lf\n", D.2590);
+}
+
+

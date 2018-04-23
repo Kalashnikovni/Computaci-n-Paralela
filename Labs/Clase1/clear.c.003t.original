@@ -1,0 +1,66 @@
+
+;; Function clear1 (null)
+;; enabled by -tree-original
+
+
+{
+  int i;
+
+    int i;
+  i = 0;
+  goto <D.2558>;
+  <D.2557>:;
+  *(array + (sizetype) ((long unsigned int) i * 4)) = 0;
+  i = i + 1;
+  <D.2558>:;
+  if (i < size) goto <D.2557>; else goto <D.2559>;
+  <D.2559>:;
+}
+
+
+;; Function clear2 (null)
+;; enabled by -tree-original
+
+
+{
+  int * p;
+
+    int * p;
+  p = array;
+  goto <D.2566>;
+  <D.2565>:;
+  *p = 0;
+  p = p + 4;
+  <D.2566>:;
+  if (array + (sizetype) ((long unsigned int) size * 4) > p) goto <D.2565>; else goto <D.2567>;
+  <D.2567>:;
+}
+
+
+;; Function clear3 (null)
+;; enabled by -tree-original
+
+
+{
+  memset ((void *) array, 0, (long unsigned int) size * 4);
+}
+
+
+;; Function main (null)
+;; enabled by -tree-original
+
+
+{
+  double t = omp_get_wtime ();
+
+    double t = omp_get_wtime ();
+  clear1 ((int *) &a, 134217728);
+  printf ((const char * restrict) "clear1: %lf\n", omp_get_wtime () - t);
+  t = omp_get_wtime ();
+  clear2 ((int *) &a, 134217728);
+  printf ((const char * restrict) "clear2: %lf\n", omp_get_wtime () - t);
+  t = omp_get_wtime ();
+  clear3 ((int *) &a, 134217728);
+  printf ((const char * restrict) "clear3: %lf\n", omp_get_wtime () - t);
+}
+

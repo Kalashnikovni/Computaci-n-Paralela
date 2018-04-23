@@ -1,0 +1,4 @@
+#!/bin/bash
+
+./flow-code/color_flow flow.flo out.png && echo 'File out.png saved'
+

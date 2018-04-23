@@ -1,0 +1,4 @@
+#!/bin/bash
+
+./horn_schunck_classic 30000 20 mini_1.jpg mini_2.jpg flow.flo
+./flo2png

@@ -1,0 +1,105 @@
+main ()
+{
+  double t;
+  double D.2590;
+  double D.2589;
+  double D.2588;
+  double D.2587;
+  double D.2586;
+  double D.2585;
+
+  <bb 2>:
+  t = omp_get_wtime ();
+  clear1 (&a, 134217728);
+  D.2585 = omp_get_wtime ();
+  D.2586 = D.2585 - t;
+  printf ("clear1: %lf\n", D.2586);
+  t = omp_get_wtime ();
+  clear2 (&a, 134217728);
+  D.2587 = omp_get_wtime ();
+  D.2588 = D.2587 - t;
+  printf ("clear2: %lf\n", D.2588);
+  t = omp_get_wtime ();
+  clear3 (&a, 134217728);
+  D.2589 = omp_get_wtime ();
+  D.2590 = D.2589 - t;
+  printf ("clear3: %lf\n", D.2590);
+  return;
+
+}
+
+
+clear3 (int * array, int size)
+{
+  long unsigned int D.2584;
+  long unsigned int D.2583;
+
+  <bb 2>:
+  D.2583 = (long unsigned int) size;
+  D.2584 = D.2583 * 4;
+  memset (array, 0, D.2584);
+  return;
+
+}
+
+
+clear2 (int * array, int size)
+{
+  int * p;
+  int * D.2582;
+  long unsigned int D.2581;
+  long unsigned int D.2580;
+
+  <bb 2>:
+  p = array;
+  goto <bb 4>;
+
+  <bb 3>:
+  *p = 0;
+  p = p + 4;
+
+  <bb 4>:
+  D.2580 = (long unsigned int) size;
+  D.2581 = D.2580 * 4;
+  D.2582 = array + D.2581;
+  if (D.2582 > p)
+    goto <bb 3>;
+  else
+    goto <bb 5>;
+
+  <bb 5>:
+  return;
+
+}
+
+
+clear1 (int * array, int size)
+{
+  int i;
+  int * D.2579;
+  long unsigned int D.2578;
+  long unsigned int D.2577;
+
+  <bb 2>:
+  i = 0;
+  goto <bb 4>;
+
+  <bb 3>:
+  D.2577 = (long unsigned int) i;
+  D.2578 = D.2577 * 4;
+  D.2579 = array + D.2578;
+  *D.2579 = 0;
+  i = i + 1;
+
+  <bb 4>:
+  if (i < size)
+    goto <bb 3>;
+  else
+    goto <bb 5>;
+
+  <bb 5>:
+  return;
+
+}
+
+

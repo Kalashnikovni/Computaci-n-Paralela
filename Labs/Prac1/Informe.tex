@@ -1,0 +1,125 @@
+\nonstopmode
+\documentclass[a4paper,10pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{textcomp}
+\usepackage[english]{babel}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage[margin=1in]{geometry}
+\usepackage{indentfirst}
+\usepackage{graphicx}
+
+\author{
+    Marzorati Denise \\
+    \texttt{M-6219/7}
+}
+
+\date{
+    20 de abril de 2018
+}
+
+\title{
+    \begin{center}
+\includegraphics[scale=1]{logo-unr.png}
+\end{center}
+\Huge \textsc{{\bfseries T}rabajo {\bfseries P}ráctico 1: Optimización secuencial} \\
+    \large \textsc{Computación paralela} \\
+}
+
+\begin{document}
+
+\bigskip
+\bigskip
+\bigskip
+
+\maketitle
+
+\thispagestyle{empty}
+
+\begin{center}
+\large \bf Docentes de la materia
+\end{center}
+
+\begin{center}
+Nicolás Wolovick
+
+Carlos Bederián
+\end{center}
+
+\newpage{}
+\normalsize
+
+\section*{Características del hardware y del software}
+
+\begin{itemize}
+  % Obtenemos con: cat /proc/cpuinfo 
+  \item CPU: Intel Core i7-3632QM @ 2.20GHz.
+  % Obtenemos con: sudo lshw -short -C memory
+  \item Memoria: 8GB, DDR3, 2 canales. 
+  \item L1 cache: 256KB
+  \item L2 cache: 1MB
+  \item L3 cache: 3MB
+  % Obtenemos con: gcc -v
+  \item Compilador: GCC 7.1.0.
+  % Obtenemos con: uname -a (el kernel)
+  % lsb_release -a (SO)
+  \item Sistema operativo: Ubuntu 16.04.4, x86\_64.
+\end{itemize}
+
+\section*{Metodología de trabajo}
+
+Para comenzar a atacar cada problema lo primero que se hará es realizar algo de profiling utilizando la
+herramienta perf, para poder identificar a dónde debe dirigirse el mayor esfuerzo en optimizar. 
+Se hará un breve resumen con las optimizaciones realizadas que dieron resultados significativos tras
+repetir varias veces la ejecución del programa.
+
+\newpage{}
+\section*{IntegralImage}
+
+Para obtener la versión más rápida posible se ha compilado el código con:
+
+gcc integralimage.c -o integral -O2 -Wall -Wextra -std=c99 -msse4 -funroll-loops -lm -lgomp.
+
+Al hacer profiling se pudo observar que la función rand() consumía gran parte del tiempo de computación, por
+lo que se buscó versiones más rápidas de la función, encontrando así la presentada en el código como
+fastRandSSE4() que es más veloz ya que hace uso de las instrucciones SSE4, generando cuatro números
+aleatorios por vez.
+
+Otra mejora fue la de hacer un poco de unrolling en el loop donde se realizan todos los cálculos
+para la generación de la imagen. 
+
+Por otro lado, se intentó hacer algo de loop tiling, alignment y  aliasing; dichas técnicas no aportaron 
+mejoras al rendimiento del programa. Todos los intentos de mejoras algorítmicas fueron fallidos, incluso
+utilizando librerías eficientes.
+\\
+\\
+Para FRAMES = 300 los resultados han sido los siguientes:
+\begin{itemize}
+  \item Avg IPC: 2.61
+  \item Avg percentage cache misses: 16.16\%
+  \item Avg time: 0.991633s 
+  \item Avg percentage stalled cycles, frontend: 18.61\%
+\end{itemize}
+\\
+Para FRAMES = 3000 los resultados han sido los siguientes:
+\begin{itemize}
+  \item Avg IPC: 2.69
+  \item Avg percentage cache misses: 12.02\%
+  \item Avg time: 9.420287s 
+  \item Avg percentage stalled cycles, frontend: 17.61\%
+\end{itemize}
+\\
+Para FRAMES = 30000 los resultados han sido los siguientes:
+\begin{itemize}
+  \item Avg IPC: 2.68
+  \item Avg percentage cache misses: 12.61\%
+  \item Avg time: 95.767781s 
+  \item Avg percentage stalled cycles, frontend: 17.89\%
+\end{itemize}
+
+\\
+Con las optimizaciones realizadas se ha podido observar que ahora el tiempo que el programa tiene
+de ejecución crece linealmente con respecto al tamaño del mismo, en este caso dado por el valor
+FRAMES.  
+
+\end{document}

@@ -1,0 +1,6 @@
+https://www.eetimes.com/document.asp?doc_id=1275470
+https://cartesianproduct.wordpress.com/2011/11/05/some-thoughts-on-the-linux-page-cache/
+http://www.ilikebigbits.com/blog/2014/4/21/the-myth-of-ram-part-i
+https://www.gdcvault.com/play/1024464/Cold-Hard-Cache-Insomniac-s -- Revisar
+http://valgrind.org/docs/manual/cg-manual.html
+

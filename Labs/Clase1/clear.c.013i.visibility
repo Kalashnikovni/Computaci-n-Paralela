@@ -1,0 +1,197 @@
+
+Marking local functions:
+
+
+Marking externally visible functions: main clear3 clear2 clear1
+
+
+Marking externally visible variables: a
+
+
+Reclaiming functions:
+Reclaiming variables:
+Clearing address taken flags:
+Symbol table:
+
+printf/7 (printf) @0x7f80b13cfdc8
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  First run: 0
+  Function flags:
+  Called by: main/4 (1.00 per call) main/4 (1.00 per call) main/4 (1.00 per call) 
+  Calls: 
+omp_get_wtime/6 (omp_get_wtime) @0x7f80b13cfc40
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  First run: 0
+  Function flags:
+  Called by: main/4 (1.00 per call) main/4 (1.00 per call) main/4 (1.00 per call) main/4 (1.00 per call) main/4 (1.00 per call) main/4 (1.00 per call) 
+  Calls: 
+memset/5 (memset) @0x7f80b13cfab8
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  First run: 0
+  Function flags:
+  Called by: clear3/3 (1.00 per call) 
+  Calls: 
+main/4 (main) @0x7f80b13cf930
+  Type: function definition analyzed
+  Visibility: force_output externally_visible public
+  References: a/0 (addr)a/0 (addr)a/0 (addr)
+  Referring: 
+  Availability: available
+  First run: 0
+  Function flags: body
+  Called by: 
+  Calls: printf/7 (1.00 per call) omp_get_wtime/6 (1.00 per call) clear3/3 (1.00 per call) omp_get_wtime/6 (1.00 per call) printf/7 (1.00 per call) omp_get_wtime/6 (1.00 per call) clear2/2 (1.00 per call) omp_get_wtime/6 (1.00 per call) printf/7 (1.00 per call) omp_get_wtime/6 (1.00 per call) clear1/1 (1.00 per call) omp_get_wtime/6 (1.00 per call) 
+clear3/3 (clear3) @0x7f80b13cf7a8
+  Type: function definition analyzed
+  Visibility: force_output externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  First run: 0
+  Function flags: body
+  Called by: main/4 (1.00 per call) 
+  Calls: memset/5 (1.00 per call) 
+clear2/2 (clear2) @0x7f80b13cf620
+  Type: function definition analyzed
+  Visibility: force_output externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  First run: 0
+  Function flags: body
+  Called by: main/4 (1.00 per call) 
+  Calls: 
+clear1/1 (clear1) @0x7f80b13cf498
+  Type: function definition analyzed
+  Visibility: force_output externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  First run: 0
+  Function flags: body
+  Called by: main/4 (1.00 per call) 
+  Calls: 
+a/0 (a) @0x7f80b1544800
+  Type: variable definition analyzed
+  Visibility: force_output externally_visible public common
+  References: 
+  Referring: main/4 (addr)main/4 (addr)main/4 (addr)
+  Availability: overwritable
+  Varpool flags:
+main ()
+{
+  double t;
+  double D.2590;
+  double D.2589;
+  double D.2588;
+  double D.2587;
+  double D.2586;
+  double D.2585;
+
+  <bb 2>:
+  t = omp_get_wtime ();
+  clear1 (&a, 134217728);
+  D.2585 = omp_get_wtime ();
+  D.2586 = D.2585 - t;
+  printf ("clear1: %lf\n", D.2586);
+  t = omp_get_wtime ();
+  clear2 (&a, 134217728);
+  D.2587 = omp_get_wtime ();
+  D.2588 = D.2587 - t;
+  printf ("clear2: %lf\n", D.2588);
+  t = omp_get_wtime ();
+  clear3 (&a, 134217728);
+  D.2589 = omp_get_wtime ();
+  D.2590 = D.2589 - t;
+  printf ("clear3: %lf\n", D.2590);
+  return;
+
+}
+
+
+clear3 (int * array, int size)
+{
+  long unsigned int D.2584;
+  long unsigned int D.2583;
+
+  <bb 2>:
+  D.2583 = (long unsigned int) size;
+  D.2584 = D.2583 * 4;
+  memset (array, 0, D.2584);
+  return;
+
+}
+
+
+clear2 (int * array, int size)
+{
+  int * p;
+  int * D.2582;
+  long unsigned int D.2581;
+  long unsigned int D.2580;
+
+  <bb 2>:
+  p = array;
+  goto <bb 4>;
+
+  <bb 3>:
+  *p = 0;
+  p = p + 4;
+
+  <bb 4>:
+  D.2580 = (long unsigned int) size;
+  D.2581 = D.2580 * 4;
+  D.2582 = array + D.2581;
+  if (D.2582 > p)
+    goto <bb 3>;
+  else
+    goto <bb 5>;
+
+  <bb 5>:
+  return;
+
+}
+
+
+clear1 (int * array, int size)
+{
+  int i;
+  int * D.2579;
+  long unsigned int D.2578;
+  long unsigned int D.2577;
+
+  <bb 2>:
+  i = 0;
+  goto <bb 4>;
+
+  <bb 3>:
+  D.2577 = (long unsigned int) i;
+  D.2578 = D.2577 * 4;
+  D.2579 = array + D.2578;
+  *D.2579 = 0;
+  i = i + 1;
+
+  <bb 4>:
+  if (i < size)
+    goto <bb 3>;
+  else
+    goto <bb 5>;
+
+  <bb 5>:
+  return;
+
+}
+
+

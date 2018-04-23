@@ -1,0 +1,468 @@
+Trivially needed symbols: main clear3 clear2 clear1 a
+
+
+Initial Symbol table:
+
+printf/7 (printf) @0x7f80b13cfdc8
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  First run: 0
+  Function flags:
+  Called by: main/4 (1.00 per call) main/4 (1.00 per call) main/4 (1.00 per call) 
+  Calls: 
+omp_get_wtime/6 (omp_get_wtime) @0x7f80b13cfc40
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  First run: 0
+  Function flags:
+  Called by: main/4 (1.00 per call) main/4 (1.00 per call) main/4 (1.00 per call) main/4 (1.00 per call) main/4 (1.00 per call) main/4 (1.00 per call) 
+  Calls: 
+memset/5 (memset) @0x7f80b13cfab8
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  First run: 0
+  Function flags:
+  Called by: clear3/3 (1.00 per call) 
+  Calls: 
+main/4 (main) @0x7f80b13cf930
+  Type: function definition analyzed
+  Visibility: force_output public
+  Aux: @0x19f4e40  References: a/0 (addr)a/0 (addr)a/0 (addr)
+  Referring: 
+  First run: 0
+  Function flags: body
+  Called by: 
+  Calls: printf/7 (1.00 per call) omp_get_wtime/6 (1.00 per call) clear3/3 (1.00 per call) omp_get_wtime/6 (1.00 per call) printf/7 (1.00 per call) omp_get_wtime/6 (1.00 per call) clear2/2 (1.00 per call) omp_get_wtime/6 (1.00 per call) printf/7 (1.00 per call) omp_get_wtime/6 (1.00 per call) clear1/1 (1.00 per call) omp_get_wtime/6 (1.00 per call) 
+clear3/3 (clear3) @0x7f80b13cf7a8
+  Type: function definition analyzed
+  Visibility: force_output public
+  Aux: @0x7f80b13cf930  References: 
+  Referring: 
+  First run: 0
+  Function flags: body
+  Called by: main/4 (1.00 per call) 
+  Calls: memset/5 (1.00 per call) 
+clear2/2 (clear2) @0x7f80b13cf620
+  Type: function definition analyzed
+  Visibility: force_output public
+  Aux: @0x7f80b13cf7a8  References: 
+  Referring: 
+  First run: 0
+  Function flags: body
+  Called by: main/4 (1.00 per call) 
+  Calls: 
+clear1/1 (clear1) @0x7f80b13cf498
+  Type: function definition analyzed
+  Visibility: force_output public
+  Aux: @0x7f80b13cf620  References: 
+  Referring: 
+  First run: 0
+  Function flags: body
+  Called by: main/4 (1.00 per call) 
+  Calls: 
+a/0 (a) @0x7f80b1544800
+  Type: variable definition analyzed
+  Visibility: force_output public common
+  Aux: @0x7f80b13cf498  References: 
+  Referring: main/4 (addr)main/4 (addr)main/4 (addr)
+  Availability: not-ready
+  Varpool flags:
+
+Removing unused symbols:
+
+Reclaimed Symbol table:
+
+printf/7 (printf) @0x7f80b13cfdc8
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  First run: 0
+  Function flags:
+  Called by: main/4 (1.00 per call) main/4 (1.00 per call) main/4 (1.00 per call) 
+  Calls: 
+omp_get_wtime/6 (omp_get_wtime) @0x7f80b13cfc40
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  First run: 0
+  Function flags:
+  Called by: main/4 (1.00 per call) main/4 (1.00 per call) main/4 (1.00 per call) main/4 (1.00 per call) main/4 (1.00 per call) main/4 (1.00 per call) 
+  Calls: 
+memset/5 (memset) @0x7f80b13cfab8
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  First run: 0
+  Function flags:
+  Called by: clear3/3 (1.00 per call) 
+  Calls: 
+main/4 (main) @0x7f80b13cf930
+  Type: function definition analyzed
+  Visibility: force_output public
+  References: a/0 (addr)a/0 (addr)a/0 (addr)
+  Referring: 
+  First run: 0
+  Function flags: body
+  Called by: 
+  Calls: printf/7 (1.00 per call) omp_get_wtime/6 (1.00 per call) clear3/3 (1.00 per call) omp_get_wtime/6 (1.00 per call) printf/7 (1.00 per call) omp_get_wtime/6 (1.00 per call) clear2/2 (1.00 per call) omp_get_wtime/6 (1.00 per call) printf/7 (1.00 per call) omp_get_wtime/6 (1.00 per call) clear1/1 (1.00 per call) omp_get_wtime/6 (1.00 per call) 
+clear3/3 (clear3) @0x7f80b13cf7a8
+  Type: function definition analyzed
+  Visibility: force_output public
+  References: 
+  Referring: 
+  First run: 0
+  Function flags: body
+  Called by: main/4 (1.00 per call) 
+  Calls: memset/5 (1.00 per call) 
+clear2/2 (clear2) @0x7f80b13cf620
+  Type: function definition analyzed
+  Visibility: force_output public
+  References: 
+  Referring: 
+  First run: 0
+  Function flags: body
+  Called by: main/4 (1.00 per call) 
+  Calls: 
+clear1/1 (clear1) @0x7f80b13cf498
+  Type: function definition analyzed
+  Visibility: force_output public
+  References: 
+  Referring: 
+  First run: 0
+  Function flags: body
+  Called by: main/4 (1.00 per call) 
+  Calls: 
+a/0 (a) @0x7f80b1544800
+  Type: variable definition analyzed
+  Visibility: force_output public common
+  References: 
+  Referring: main/4 (addr)main/4 (addr)main/4 (addr)
+  Availability: not-ready
+  Varpool flags:
+
+
+Initial Symbol table:
+
+printf/7 (printf) @0x7f80b13cfdc8
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  First run: 0
+  Function flags:
+  Called by: main/4 (1.00 per call) main/4 (1.00 per call) main/4 (1.00 per call) 
+  Calls: 
+omp_get_wtime/6 (omp_get_wtime) @0x7f80b13cfc40
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  First run: 0
+  Function flags:
+  Called by: main/4 (1.00 per call) main/4 (1.00 per call) main/4 (1.00 per call) main/4 (1.00 per call) main/4 (1.00 per call) main/4 (1.00 per call) 
+  Calls: 
+memset/5 (memset) @0x7f80b13cfab8
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  First run: 0
+  Function flags:
+  Called by: clear3/3 (1.00 per call) 
+  Calls: 
+main/4 (main) @0x7f80b13cf930
+  Type: function definition analyzed
+  Visibility: force_output public
+  References: a/0 (addr)a/0 (addr)a/0 (addr)
+  Referring: 
+  First run: 0
+  Function flags: body
+  Called by: 
+  Calls: printf/7 (1.00 per call) omp_get_wtime/6 (1.00 per call) clear3/3 (1.00 per call) omp_get_wtime/6 (1.00 per call) printf/7 (1.00 per call) omp_get_wtime/6 (1.00 per call) clear2/2 (1.00 per call) omp_get_wtime/6 (1.00 per call) printf/7 (1.00 per call) omp_get_wtime/6 (1.00 per call) clear1/1 (1.00 per call) omp_get_wtime/6 (1.00 per call) 
+clear3/3 (clear3) @0x7f80b13cf7a8
+  Type: function definition analyzed
+  Visibility: force_output public
+  References: 
+  Referring: 
+  First run: 0
+  Function flags: body
+  Called by: main/4 (1.00 per call) 
+  Calls: memset/5 (1.00 per call) 
+clear2/2 (clear2) @0x7f80b13cf620
+  Type: function definition analyzed
+  Visibility: force_output public
+  References: 
+  Referring: 
+  First run: 0
+  Function flags: body
+  Called by: main/4 (1.00 per call) 
+  Calls: 
+clear1/1 (clear1) @0x7f80b13cf498
+  Type: function definition analyzed
+  Visibility: force_output public
+  References: 
+  Referring: 
+  First run: 0
+  Function flags: body
+  Called by: main/4 (1.00 per call) 
+  Calls: 
+a/0 (a) @0x7f80b1544800
+  Type: variable definition analyzed
+  Visibility: force_output public common
+  References: 
+  Referring: main/4 (addr)main/4 (addr)main/4 (addr)
+  Availability: not-ready
+  Varpool flags:
+
+Removing unused symbols:
+
+Reclaimed Symbol table:
+
+printf/7 (printf) @0x7f80b13cfdc8
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  First run: 0
+  Function flags:
+  Called by: main/4 (1.00 per call) main/4 (1.00 per call) main/4 (1.00 per call) 
+  Calls: 
+omp_get_wtime/6 (omp_get_wtime) @0x7f80b13cfc40
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  First run: 0
+  Function flags:
+  Called by: main/4 (1.00 per call) main/4 (1.00 per call) main/4 (1.00 per call) main/4 (1.00 per call) main/4 (1.00 per call) main/4 (1.00 per call) 
+  Calls: 
+memset/5 (memset) @0x7f80b13cfab8
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  First run: 0
+  Function flags:
+  Called by: clear3/3 (1.00 per call) 
+  Calls: 
+main/4 (main) @0x7f80b13cf930
+  Type: function definition analyzed
+  Visibility: force_output public
+  References: a/0 (addr)a/0 (addr)a/0 (addr)
+  Referring: 
+  First run: 0
+  Function flags: body
+  Called by: 
+  Calls: printf/7 (1.00 per call) omp_get_wtime/6 (1.00 per call) clear3/3 (1.00 per call) omp_get_wtime/6 (1.00 per call) printf/7 (1.00 per call) omp_get_wtime/6 (1.00 per call) clear2/2 (1.00 per call) omp_get_wtime/6 (1.00 per call) printf/7 (1.00 per call) omp_get_wtime/6 (1.00 per call) clear1/1 (1.00 per call) omp_get_wtime/6 (1.00 per call) 
+clear3/3 (clear3) @0x7f80b13cf7a8
+  Type: function definition analyzed
+  Visibility: force_output public
+  References: 
+  Referring: 
+  First run: 0
+  Function flags: body
+  Called by: main/4 (1.00 per call) 
+  Calls: memset/5 (1.00 per call) 
+clear2/2 (clear2) @0x7f80b13cf620
+  Type: function definition analyzed
+  Visibility: force_output public
+  References: 
+  Referring: 
+  First run: 0
+  Function flags: body
+  Called by: main/4 (1.00 per call) 
+  Calls: 
+clear1/1 (clear1) @0x7f80b13cf498
+  Type: function definition analyzed
+  Visibility: force_output public
+  References: 
+  Referring: 
+  First run: 0
+  Function flags: body
+  Called by: main/4 (1.00 per call) 
+  Calls: 
+a/0 (a) @0x7f80b1544800
+  Type: variable definition analyzed
+  Visibility: force_output public common
+  References: 
+  Referring: main/4 (addr)main/4 (addr)main/4 (addr)
+  Availability: not-ready
+  Varpool flags:
+
+Reclaiming functions:
+Reclaiming variables:
+Clearing address taken flags:
+Optimized Symbol table:
+
+printf/7 (printf) @0x7f80b13cfdc8
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  First run: 0
+  Function flags:
+  Called by: main/4 (1.00 per call) main/4 (1.00 per call) main/4 (1.00 per call) 
+  Calls: 
+omp_get_wtime/6 (omp_get_wtime) @0x7f80b13cfc40
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  First run: 0
+  Function flags:
+  Called by: main/4 (1.00 per call) main/4 (1.00 per call) main/4 (1.00 per call) main/4 (1.00 per call) main/4 (1.00 per call) main/4 (1.00 per call) 
+  Calls: 
+memset/5 (memset) @0x7f80b13cfab8
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  First run: 0
+  Function flags:
+  Called by: clear3/3 (1.00 per call) 
+  Calls: 
+main/4 (main) @0x7f80b13cf930
+  Type: function definition analyzed
+  Visibility: force_output externally_visible public
+  References: a/0 (addr)a/0 (addr)a/0 (addr)
+  Referring: 
+  Availability: available
+  First run: 0
+  Function flags: body
+  Called by: 
+  Calls: printf/7 (1.00 per call) omp_get_wtime/6 (1.00 per call) clear3/3 (1.00 per call) omp_get_wtime/6 (1.00 per call) printf/7 (1.00 per call) omp_get_wtime/6 (1.00 per call) clear2/2 (1.00 per call) omp_get_wtime/6 (1.00 per call) printf/7 (1.00 per call) omp_get_wtime/6 (1.00 per call) clear1/1 (1.00 per call) omp_get_wtime/6 (1.00 per call) 
+clear3/3 (clear3) @0x7f80b13cf7a8
+  Type: function definition analyzed
+  Visibility: force_output externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  First run: 0
+  Function flags: body
+  Called by: main/4 (1.00 per call) 
+  Calls: memset/5 (1.00 per call) 
+clear2/2 (clear2) @0x7f80b13cf620
+  Type: function definition analyzed
+  Visibility: force_output externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  First run: 0
+  Function flags: body
+  Called by: main/4 (1.00 per call) 
+  Calls: 
+clear1/1 (clear1) @0x7f80b13cf498
+  Type: function definition analyzed
+  Visibility: force_output externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  First run: 0
+  Function flags: body
+  Called by: main/4 (1.00 per call) 
+  Calls: 
+a/0 (a) @0x7f80b1544800
+  Type: variable definition analyzed
+  Visibility: force_output externally_visible public common
+  References: 
+  Referring: main/4 (addr)main/4 (addr)main/4 (addr)
+  Availability: overwritable
+  Varpool flags:
+Materializing clones
+Materialization Call site updates done.
+
+Reclaiming functions:
+Reclaiming variables:
+Clearing address taken flags:
+
+Final Symbol table:
+
+printf/7 (printf) @0x7f80b13cfdc8
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  First run: 0
+  Function flags:
+  Called by: 
+  Calls: 
+omp_get_wtime/6 (omp_get_wtime) @0x7f80b13cfc40
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  First run: 0
+  Function flags:
+  Called by: 
+  Calls: 
+memset/5 (memset) @0x7f80b13cfab8
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  First run: 0
+  Function flags:
+  Called by: 
+  Calls: 
+main/4 (main) @0x7f80b13cf930
+  Type: function definition analyzed
+  Visibility: force_output externally_visible asm_written public
+  References: 
+  Referring: 
+  Availability: available
+  First run: 0
+  Function flags:
+  Called by: 
+  Calls: 
+clear3/3 (clear3) @0x7f80b13cf7a8
+  Type: function definition analyzed
+  Visibility: force_output externally_visible asm_written public
+  References: 
+  Referring: 
+  Availability: available
+  First run: 0
+  Function flags:
+  Called by: 
+  Calls: 
+clear2/2 (clear2) @0x7f80b13cf620
+  Type: function definition analyzed
+  Visibility: force_output externally_visible asm_written public
+  References: 
+  Referring: 
+  Availability: available
+  First run: 0
+  Function flags:
+  Called by: 
+  Calls: 
+clear1/1 (clear1) @0x7f80b13cf498
+  Type: function definition analyzed
+  Visibility: force_output externally_visible asm_written public
+  References: 
+  Referring: 
+  Availability: available
+  First run: 0
+  Function flags:
+  Called by: 
+  Calls: 
+a/0 (a) @0x7f80b1544800
+  Type: variable definition analyzed
+  Visibility: force_output externally_visible asm_written public common
+  References: 
+  Referring: 
+  Availability: overwritable
+  Varpool flags:
