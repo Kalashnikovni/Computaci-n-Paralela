@@ -1,0 +1,2 @@
+https://software.intel.com/sites/landingpage/IntrinsicsGuide/# - Intel's intrinsics guide
+
