@@ -1,0 +1,151 @@
+\nonstopmode
+\documentclass[a4paper,10pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{textcomp}
+\usepackage[english]{babel}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage[margin=1in]{geometry}
+\usepackage{indentfirst}
+\usepackage{graphicx}
+
+\author{
+    Marzorati Denise \\
+    \texttt{M-6219/7}
+}
+
+\date{
+    10 de mayo de 2018
+}
+
+\title{
+    \begin{center}
+\includegraphics[scale=1]{logo-unr.png}
+\end{center}
+\Huge \textsc{{\bfseries T}rabajo {\bfseries P}ráctico 1: Optimización secuencial} \\
+    \large \textsc{Computación paralela} \\
+}
+
+\begin{document}
+
+\bigskip
+\bigskip
+\bigskip
+
+\maketitle
+
+\thispagestyle{empty}
+
+\begin{center}
+\large \bf Docentes de la materia
+\end{center}
+
+\begin{center}
+Nicolás Wolovick
+
+Carlos Bederián
+\end{center}
+
+\newpage{}
+\normalsize
+
+\section*{Características del hardware y del software}
+
+\begin{itemize}
+  % Obtenemos con: cat /proc/cpuinfo 
+  \item CPU: Intel Core i7-3632QM @ 2.20GHz.
+  % Obtenemos con: sudo lshw -short -C memory
+  \item Memoria: 8GB, DDR3, 2 canales. 
+  \item L1 cache: 256KB
+  \item L2 cache: 1MB
+  \item L3 cache: 3MB
+  % Obtenemos con: gcc -v
+  \item Compiladores: GCC 7.1.0, Clang 5.0, PGI, AOCC (compilador de AMD).
+  % Obtenemos con: uname -a (el kernel)
+  % lsb_release -a (SO)
+  \item Sistema operativo: Ubuntu 16.04.4, x86\_64.
+\end{itemize}
+
+\newpage{}
+\section*{IntegralImage}
+
+Para obtener la versión más rápida posible se ha compilado el código con:
+
+clang-5.0 integralimage.c -o integral -O2 -march=ivybridge -funroll-loops -Wall -Wextra -std=c99 -lm -lgomp.
+
+Una de las primeras cosas que se hizo fue la de probar usando distintos compiladores. Clang fue
+con el que se obtuvieron los mejores resultados, con GCC y AOCC devolviendo valores ligeramente
+inferiores a los del mencionado compilador. Por otro lado, PGI tuvo un rendimiento pésimo,
+puesto que para FRAMES=300 la ejecución del programa tomó alrededor de ciento cincuenta segundos.
+
+Para lograr autovectorización se escribieron varias versiones de la función "integral\_image",
+usando las técnicas mostradas en la clase correspondiente al tema. Es decir, el uso de restrict,
+se indicó el alineamiento de las variables en memoria, se redujeron los múltiples loops a un
+único loop. Sin embargo nada de esto logró que el compilador autovectorizara.
+
+Por el motivo antes mencionado se prosiguió intentando vectorizar la función a mano, pero cada
+uno de los intentos bajó el rendimiento del programa notablemente, así que la opción se descartó.
+
+Como Carlos envió un mail avisando de que había un problema para usar ISPC, ni siquiera se intentó
+usar el compilador.
+
+En resumen, con respecto al trabajo anterior lo único que dio resultado fue cambiar el compilador,
+que pasó de ser GCC-7 a Clang-5. Nada fue modificado del código.
+
+Aclaración: sin haber visto el tema en las clases, para el primer trabajo se utilizó una función
+generadora de números aleatorios que hace uso de SSE4, y está escrita con intrinsics, lo que
+significó una mejora importante en el rendimiento del programa. 
+
+\subsubsection*{FRAMES = 300}
+\begin{table}[h]
+\centering
+\label{my-label}
+\begin{tabular}{|l|c|c|}
+\hline
+                                 & \multicolumn{1}{l|}{Práctico 1} & \multicolumn{1}{l|}{Práctico 2} \\ \hline
+Avg IPC                          & 2.61                            & 2.25                            \\ \hline
+Avg \% cache misses              & 16.16\%                         & 14.02\%                         \\ \hline
+Avg time                         & \multicolumn{1}{l|}{0.991633s}  & \multicolumn{1}{l|}{0.8807468s} \\ \hline
+Avg \% stalled cycles, front end & 18.61\%                         & 21.21\%                         \\ \hline
+\end{tabular}
+\caption{Resultados para FRAMES = 300}
+\end{table}
+
+\subsubsection*{FRAMES = 3000}
+\begin{table}[h]
+\centering
+\begin{tabular}{|l|c|c|}
+\hline
+                                 & \multicolumn{1}{l|}{Práctico 1} & \multicolumn{1}{l|}{Práctico 2} \\ \hline
+Avg IPC                          & 2.69                            & 2.48                            \\ \hline
+Avg \% cache misses              & 12.02\%                         & 11.69\%                         \\ \hline
+Avg time                         & \multicolumn{1}{l|}{9.420287s}  & \multicolumn{1}{l|}{8.802669s}  \\ \hline
+Avg \% stalled cycles, front end & 17.61\%                         & 16.67\%                         \\ \hline
+\end{tabular}
+\caption{Resultados para FRAMES = 3000}
+\label{my-label}
+\end{table}
+
+\subsubsection*{FRAMES = 30000}
+\begin{table}[h]
+\centering
+\begin{tabular}{|l|c|c|}
+\hline
+                                 & \multicolumn{1}{l|}{Práctico 1} & \multicolumn{1}{l|}{Práctico 2} \\ \hline
+Avg IPC                          & 2.68                            & 2.53                            \\ \hline
+Avg \% cache misses              & 12.61\%                         & 9.40\%                          \\ \hline
+Avg time                         & \multicolumn{1}{l|}{95.767781s} & \multicolumn{1}{l|}{82.109516s} \\ \hline
+Avg \% stalled cycles, front end & 17.89\%                         & 15.46\%                         \\ \hline
+\end{tabular}
+\caption{Resultados para FRAMES = 30000}
+\label{my-label}
+\end{table}
+
+\\
+Con las optimizaciones realizadas se ha podido observar que ahora el tiempo que el programa tiene
+de ejecución crece linealmente con respecto al tamaño del mismo, en este caso dado por el valor
+FRAMES.  
+
+No han surgido ideas para potenciales mejoras en la vectorización.
+
+\end{document}

@@ -1,4 +1,3 @@
-
 #define _GNU_SOURCE
 
 #include <emmintrin.h>
@@ -20,9 +19,9 @@
 typedef int v8si __attribute__ ((vector_size (32)));
 
 // Parameters
-static const unsigned int WIDTH  = 1920;
-static const unsigned int HEIGHT = 1080;
-static const unsigned int FRAMES = 30000;
+static const unsigned int WIDTH  = 2920;
+static const unsigned int HEIGHT = 2080;
+static const unsigned int FRAMES = 300;
 
 static unsigned int idx(unsigned int x, unsigned int y, unsigned int stride){
   return y * stride + x;
@@ -44,6 +43,7 @@ static void random_fill(unsigned char * restrict matrix){
                sptr[8], sptr[9], sptr[10], sptr[11],
                sptr[12], sptr[13], sptr[14], sptr[15], &fr);
 
+  #pragma omp for
   for(unsigned int y = 0; y < HEIGHT; ++y){
     for(unsigned int x = 0; x < WIDTH; x += 4){
       fastRandSSE4(&fr);
@@ -78,20 +78,29 @@ static void integral_image(const unsigned char * in, unsigned int * out){
     out[x] = row_sum;
   }
 
+  #pragma omp for ordered collapse(2) private(row_sum)
   for(unsigned int y = 1; y < HEIGHT; ++y){
     row_sum = 0;
 
     for(unsigned w = 0; w < WIDTH; w += 4){
       row_sum += in[idx(w, y, WIDTH)];
+      //#pragma omp ordered
+      #pragma omp atomic
       out[idx(w, y, WIDTH)] = row_sum + out[idx(w, y-1, WIDTH)];
 
       row_sum += in[idx(w + 1, y, WIDTH)];
+      //#pragma omp ordered
+      #pragma omp atomic
       out[idx(w + 1, y, WIDTH)] = row_sum + out[idx(w + 1, y-1, WIDTH)];
 
       row_sum += in[idx(w + 2, y, WIDTH)];
+      //#pragma omp ordered
+      #pragma omp atomic
       out[idx(w + 2, y, WIDTH)] = row_sum + out[idx(w + 2, y-1, WIDTH)];
 
       row_sum += in[idx(w + 3, y, WIDTH)];
+      //#pragma omp ordered
+      #pragma omp atomic
       out[idx(w + 3, y, WIDTH)] = row_sum + out[idx(w + 3, y-1, WIDTH)];
     }
   }

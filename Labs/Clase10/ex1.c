@@ -42,7 +42,7 @@ void test4(double * restrict a, double * restrict b){
     x[i] += y[i];
 }
 
-int main(void){
+/*int main(void){
   double *a, *b;
 
   for(int i = 0; i < SIZE; i++){
@@ -53,4 +53,4 @@ int main(void){
   test1(a, b);
 
   return 0;
-}
+}*/

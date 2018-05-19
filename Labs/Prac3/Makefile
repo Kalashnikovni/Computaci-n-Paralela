@@ -1,7 +1,7 @@
 CC=clang-5.0
 CFLAGS=-Wall -Wextra -std=c99 -g -O3 -march=ivybridge -funroll-loops #-ftree-vectorize #-fopt-info 
 
-LDFLAGS=-lm -lgomp
+LDFLAGS=-lm -lgomp -fopenmp
 
 TARGET=integralimage
 

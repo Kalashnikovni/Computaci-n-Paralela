@@ -1,0 +1,2 @@
+openmp_mandel:
+	icc openmp_mandel.cc -openmp -O3 `sdl-config --cflags --libs`
